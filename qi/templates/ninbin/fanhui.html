@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正在返回</title>
+</head>
+<body>
+<script>
+    (function () {
+        var name;
+        var tag_id='{{ tag_id }}'
+{#        var name_id='{{ froms.pk }}'#}
+        if (tag_id=='id_group'){
+            name="{{ obj.title }}"
+        }
+        else {
+            name="{{ obj.name }}"
+        }
+
+        window.opener.xxxxx(name,tag_id);
+        window.close()
+    })()
+
+
+</script>
+</body>
+</html>

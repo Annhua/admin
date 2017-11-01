@@ -1,0 +1,161 @@
+{% extends 'ninbin/layout.html' %}
+{% load result_list %}
+
+
+{% block css %}
+
+    <style>
+        .filter-item{
+            padding: 5px 0;
+        }
+        .filter-item a{
+            display: inline-block;
+            padding: 5px 8px;
+            border: 1px solid #d9edf7;
+        }
+        .filter-item a.active{
+            background-color: red;
+            color: white;
+        }
+    </style>
+
+{% endblock %}
+
+
+
+
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="#">首页</a></li>
+        <li class="active">数据列表</li>
+    </ol>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+    <h1>数据列表</h1>
+    <form method="post">
+        {% csrf_token %}
+
+        <!-- 单选多选框开始 -->
+        <div class="row">
+
+            {% if cl.list_filter %}
+                {% for data_list in cl.gen_list_filter %}
+                    <div class="filter-item">
+                        {% for obj in data_list %}
+                            {{ obj }}
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+
+            {% endif %}
+
+        </div>
+        <!-- 单选多选框结束 -->
+
+        <!-- select和add按钮开始 -->
+        <div class="row">
+            {% deleter cl %}
+
+
+            {% if cl.model_config_obj.get_show_add_btn %}
+                {{ cl.add_html }}
+            {% endif %}
+
+        </div>
+        <!-- select和add按钮结束 -->
+
+        <!-- 表头，表内容开始 -->
+        <div class="row">
+            {% show_result_list cl %}
+        </div>
+       <!-- 表头，表内容结束 -->
+
+        <!-- 页码开始 -->
+        <div>
+             <ul class="pagination">
+               {{ cl.page_html }}
+             </ul>
+        </div>
+        <!-- 页码结束 -->
+    </form>
+</div>
+
+{% endblock %}
+
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#    <link rel="stylesheet" href="/static/ninbin/plugins/bootstrap/css/bootstrap.css"/>#}
+{#    <style>#}
+{#        .filter-item{#}
+{#            padding: 5px 0;#}
+{#        }#}
+{#        .filter-item a{#}
+{#            display: inline-block;#}
+{#            padding: 5px 8px;#}
+{#            border: 1px solid #d9edf7;#}
+{#        }#}
+{#        .filter-item a.active{#}
+{#            background-color: red;#}
+{#            color: white;#}
+{#        }#}
+{#    </style>#}
+{#</head>#}
+{#<body>#}
+{#<div class="container">#}
+{#    <h1>数据列表</h1>#}
+{#    <form method="post">#}
+{#        {% csrf_token %}#}
+{##}
+{#        <!-- 单选多选框开始 -->#}
+{#        <div class="row">#}
+{##}
+{#            {% if cl.list_filter %}#}
+{#                {% for data_list in cl.gen_list_filter %}#}
+{#                    <div class="filter-item">#}
+{#                        {% for obj in data_list %}#}
+{#                            {{ obj }}#}
+{#                        {% endfor %}#}
+{#                    </div>#}
+{#                {% endfor %}#}
+{##}
+{#            {% endif %}#}
+{##}
+{#        </div>#}
+{#        <!-- 单选多选框结束 -->#}
+{##}
+{#        <!-- select和add按钮开始 -->#}
+{#        <div class="row">#}
+{#            {% deleter cl %}#}
+{##}
+{##}
+{#            {% if cl.model_config_obj.get_show_add_btn %}#}
+{#                {{ cl.add_html }}#}
+{#            {% endif %}#}
+{##}
+{#        </div>#}
+{#        <!-- select和add按钮结束 -->#}
+{##}
+{#        <!-- 表头，表内容开始 -->#}
+{#        <div class="row">#}
+{#            {% show_result_list cl %}#}
+{#        </div>#}
+{#       <!-- 表头，表内容结束 -->#}
+{##}
+{#        <!-- 页码开始 -->#}
+{#        <div>#}
+{#             <ul class="pagination">#}
+{#               {{ cl.page_html }}#}
+{#             </ul>#}
+{#        </div>#}
+{#        <!-- 页码结束 -->#}
+{#    </form>#}
+{#</div>#}
+{##}
+{##}
+{#</body>#}
+{#</html>#}

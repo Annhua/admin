@@ -1,0 +1,38 @@
+<form class="form-horizontal" method="POST" novalidate>
+ {% csrf_token %}
+    {% for col in forms %}
+        <div class="form-group col-sm-6">
+            <label class="col-sm-3 control-label">{{ col.item.label }}</label>
+            <div class="col-sm-9" style="position: relative">
+                {{ col.item }}
+                {{ col.item.errors.0 }}
+                {% if col.has_popup %}
+                    <a class='btn btn-info' onclick="popup('{{ col.popup_url }}')">增加</a>
+                {% endif %}
+            </div>
+
+        </div>
+    {% endfor %}
+
+    <div class="form-group">
+        <div class="col-sm-offset-10 col-sm-2">
+            <input type="submit" class="btn btn-primary" value="确认添加"/>
+        </div>
+    </div>
+</form>
+
+
+<script>
+    function xxxxx(name,tag_id) {
+            var tag_id=document.getElementById(tag_id)
+            var option=document.createElement('option')
+            option.innerHTML=name;
+            option.setAttribute('selected','selected')
+            tag_id.appendChild(option)
+
+    }
+
+    function popup(url) {
+        window.open(url,url,"status=0.5, height:100, width:100, toolbar=0, resizeable=0")
+    }
+</script>

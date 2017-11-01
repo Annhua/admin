@@ -1,0 +1,9 @@
+<select class="form-control" name="action" style="display: inline-block;width: 200px;">
+    <option value="">请选择</option>
+    <option value="">请选择选择</option>
+        {{% for foo in delter_get %}
+            <option  value="{{ foo.0 }}">{{ foo.1 }}</option>
+        {% endfor %}
+
+</select>
+<input type="submit" value="执行" class="btn btn">

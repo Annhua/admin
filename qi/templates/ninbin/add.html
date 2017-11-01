@@ -1,0 +1,39 @@
+{% extends 'ninbin/layout.html' %}
+{% load static %}
+{% load result_form %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'ninbin/css/form-control.css' %}" />
+{% endblock %}
+
+
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="#">首页</a></li>
+        <li class="active">添加数据</li>
+    </ol>
+{% endblock %}
+
+
+{% block content %}
+    <div>
+        {% show_from froms %}
+    </div>
+{% endblock %}
+
+
+{#{% load result_form %}#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#    <link rel="stylesheet" href="/static/ninbin/plugins/bootstrap/css/bootstrap.css"/>#}
+{#</head>#}
+{#<body>#}
+{#        <h1> 增加</h1>#}
+{##}
+{#        {% show_from froms %}#}
+{##}
+{#</body>#}
+{#</html>#}

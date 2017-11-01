@@ -1,0 +1,49 @@
+{% extends 'ninbin/layout.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'ninbin/css/form-control.css' %}" />
+{% endblock %}
+
+
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="#">首页</a></li>
+        <li class="active">修改页面</li>
+    </ol>
+{% endblock %}
+
+
+{% block content %}
+    <form method="POST" class="form-horizontal" novalidate>
+        {% csrf_token %}
+        {{ froms.as_p }}
+        <input type="submit" value="提交">
+    </form>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#</head>#}
+{#<body>#}
+{#<h1>修改页面</h1>#}
+{#<form method="POST" class="form-horizontal" novalidate>#}
+{#    {% csrf_token %}#}
+{#    {{ froms.as_p }}#}
+{#    <input type="submit" value="提交">#}
+{#</form>#}
+{##}
+{##}
+{#</body>#}
+{#</html>#}
